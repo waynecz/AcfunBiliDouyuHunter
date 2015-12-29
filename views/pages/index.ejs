@@ -9,14 +9,30 @@
 <!--░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄-->
 <!--░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒-->
 <!--▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒-->
-<html lang="zh-HANS">
-  <head>
-  	<% include ../partials/head  %>
-    <title><%= title || 'waynecz' %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1 class="haha"><%= title %></h1>
-    <p>Welcome to <%= title %> 摁下F12试试？</p>
-  </body>
+<html lang="zh-HANS" ng-app="ngApp">
+	<head>
+		<% include ../partials/head  %>
+		<title><%= title || 'waynecz' %></title> 
+		<!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+		<script src="javascripts/controller.js"></script>
+	</head>
+	<body ng-controller="PhoneListCtrl">
+		<div class="container-fluid">
+			<iv class="row">
+				<div class="col-md-2">
+					Search: <input type="text" ng-model="query">
+					Sort by:
+					<input ng-model="orderProp">
+				</div>
+				<div class="col-md-10">
+					<ul class="phones">
+						<li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+							{{phone.name}}
+							<p>{{phone.snippet}}</p>
+						</li>
+					</ul>
+				</div>
+			</iv>
+		</div>
+	</body>
 </html>

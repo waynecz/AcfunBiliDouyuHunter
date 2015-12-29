@@ -4,8 +4,13 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
     cssmin = require('gulp-minify-css'),
+    autoprefixer = require('gulp-autoprefixer'),
+    csscomb = require('gulp-csscomb'),
 	browserSync = require('browser-sync').create(),//引入模块
+    reload = browserSync.reload,
 	jsmin = require('gulp-uglify'),
+    compass = require('gulp-compass'),
+    sass = require('gulp-sass'),
     rename = require('gulp-rename');
 
 gulp.task('browser-sync', function() {//注册任务
@@ -16,11 +21,23 @@ gulp.task('browser-sync', function() {//注册任务
     });
 });
 
-gulp.task('css-min', function() {//css合并压缩
-    gulp.src(['css/*.css', 'public/components/reset.css'])
-    	.pipe(concat('common.min.css'))
-    	.pipe(cssmin())
-    	.pipe(gulp.dest('public/stylesheets'));
+gulp.task('css', function() {//css合并压缩
+    gulp.src(['public/stylesheets/*.css'])
+        .pipe(autoprefixer({
+            browsers: ['last 6 versions'],
+            cascade: false
+        }))
+        .pipe(csscomb())
+        .pipe(gulp.dest("public/stylesheets"));
+});
+
+// scss编译css
+gulp.task('sass', function() {
+    return gulp.src("mySass/sass/*.scss")
+        .pipe(compass({
+          css: 'public/stylesheets',
+          sass: 'source/sass'
+        }))
 });
 
 gulp.task('browser-sync', function() {//注册任务
@@ -30,16 +47,17 @@ gulp.task('browser-sync', function() {//注册任务
     });
 });
 
-gulp.task('js-min', function() {//js合并压缩
-    gulp.src('public/components/*.js')
-    	.pipe(concat('common.min.js'))
-    	.pipe(jsmin())
-    	.pipe(gulp.dest('public/javascripts'))
-});
+// gulp.task('js-min', function() {//js合并压缩
+//     gulp.src('public/components/*.js')
+//     	.pipe(concat('common.min.js'))
+//     	.pipe(jsmin())
+//     	.pipe(gulp.dest('public/javascripts'))
+// });
 
-gulp.watch('js/*.js', ['js-min']);
-gulp.watch('css/*.css', ['css-min']);
-gulp.task('default', ["browser-sync", 'css-min', 'js-min'])
+// gulp.watch('js/*.js', ['js-min']);
+gulp.watch('source/sass/*.scss', ['sass']);
+gulp.watch('public/stylesheets/*.css', ['css']);
+gulp.task('default', ["browser-sync", "sass", "css"])
 
 
 
