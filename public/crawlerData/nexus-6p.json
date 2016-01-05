@@ -1,0 +1,18 @@
+{
+  "some": [{
+    "key": "Name",
+    "value": ["Nexus 6P"]
+  }, {
+    "key": "Dimensions",
+    "value": ["159.3 x 77.8 x 7.3mm", "178 grams"]
+  }, {
+    "key": "Display",
+    "value": ["5.7\"", "Corning® Gorilla® Glass 4"]
+  }, {
+    "key": "Battery",
+    "value": ["3450 mAh Battery", "USB Type-C for fast charging"]
+  }],
+
+  "images": ["images/nexus6P-1.jpg", "images/nexus6P-2.jpg", "images/nexus6P-3.jpg"]
+
+}

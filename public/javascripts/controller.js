@@ -1,7 +1,12 @@
-angular.module('ngApp', []).controller('PhoneListCtrl',
-	function($scope, $http) {
-		$http.get('phones/phones.json').success(function(data) {
-			$scope.phones = data;
+var Nexus = angular.module('Nexus', [])
+	Nexus.controller('PhoneListCtrl',
+		function($scope, $http) {
+				$scope.list = ["nexux 6P", "nexus 5X"];
+			})
 		})
-		$scope.orderProp = 'name';
-	})
+	Nexus.controller('PhoneDetCtrl',
+		function($scope, $routeParams, $http) {
+			$http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+				$scope.phone = data;
+			})
+		})

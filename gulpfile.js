@@ -16,7 +16,7 @@ var gulp = require('gulp'),
 gulp.task('browser-sync', function() {//注册任务
     browserSync.init({//调用API
         server: {
-            baseDir: "./" //监听当前路径
+            baseDir: ["./public/stylesheets", "**/*.html"] //监听当前路径
         }
     });
 });
@@ -57,7 +57,7 @@ gulp.task('browser-sync', function() {//注册任务
 // gulp.watch('js/*.js', ['js-min']);
 gulp.watch('source/sass/*.scss', ['sass']);
 gulp.watch('public/stylesheets/*.css', ['css']);
-gulp.task('default', ["browser-sync", "sass", "css"])
+gulp.task('default', ["browser-sync", "css"])
 
 
 

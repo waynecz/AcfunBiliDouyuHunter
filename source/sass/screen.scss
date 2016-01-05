@@ -3,14 +3,34 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
-@import "compass/layout";
-
-#inline-block {
-	border-radius: 5px;
-	transform: translate(3px);
+@import "compass/css3";
+body {
+	background: #37474f 
 }
-
-#footer {
-	@include sticky-footer(54px);
+.topic-list {
+	.topic-title {
+		text-align: center;
+		padding: 30px 0;
+		font-size: 20px;
+		color: #fefefe;
+	}
+	li {
+		width: 300px;
+		padding: 9px 3px 20px;
+		float: left;
+	}
+	.l {
+		width: 100px;
+		@include inline-block;
+	}
+	.r{
+		font-size: 12px;
+		height: 16px;
+		line-height: 16px;
+		max-width: 210px;
+		overflow: hidden;
+		@include inline-block;
+		vertical-align: top;
+		color: #fff;
+	}
 }
