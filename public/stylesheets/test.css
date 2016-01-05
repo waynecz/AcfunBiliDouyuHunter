@@ -1,0 +1,14 @@
+.column-container{
+    color: #111;
+    zoom: 1;
+}
+.column-container:after{
+    display: block;
+    clear: both;
+    content: "\200B";
+    height: 0;
+}
+body {
+	background: #ffc1f5;
+}
+/*# sourceMappingURL=test.css.map */

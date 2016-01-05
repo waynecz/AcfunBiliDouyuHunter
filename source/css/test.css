@@ -1,0 +1,17 @@
+@define-mixin clearfix{
+    &:after{
+        display: block;
+        clear: both;
+        content: "\200B";
+        height: 0;
+    }
+    *zoom: 1;
+}
+
+.column-container{
+    color: #111;
+    @mixin clearfix;
+}
+body {
+	background: #fec1f5;
+}
