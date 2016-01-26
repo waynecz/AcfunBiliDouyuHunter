@@ -1,7 +1,7 @@
-<ul class="topic-list">
+<ul class="topic-list cf">
 	<!-- <li class="topic-title">Ac娱乐</li> -->
-	<li ng-repeat="single in acfun">
-		<img ng-src="{{single.img}}" alt="single.text" class="l">
-		<a href="{{single.href}}" title="{{single.text}}" class="r">{{single.text}}</a>
-	</li>
+	<li class="p" ng-repeat="single in acfun">
+		<div class="l"><a href="{{single.href}}" target="_blank"><img ng-src="{{single.img}}" alt="single.text"></a></div>
+		<div class="r"><a href="{{single.href}}" title="{{single.title}}" target="_blank">{{single.title}}</a></div>
+	</li>	
 </ul>

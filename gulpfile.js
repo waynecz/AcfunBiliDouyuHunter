@@ -26,7 +26,7 @@ gulp.task('serve', function() {
 
 gulp.task('serve', function(){
     browserSync.init({
-        files: ["public/stylesheets/**", "partials/*.html"],// 监听文件的路径
+        files: ["public/stylesheets/**", "public/partials/*.html", "public/javascripts/app.js"],// 监听文件的路径
         proxy: 'localhost:3003'
     })
 })
@@ -41,7 +41,7 @@ gulp.task("postcss", function(){
             browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 8"]
         })];
 
-    return gulp.src(["source/*.css"])
+    return gulp.src(["source/css/*.css"])
         .pipe(sourcemaps.init())
         .pipe(postcss(processors))
         .pipe(sourcemaps.write("."))
@@ -49,7 +49,7 @@ gulp.task("postcss", function(){
         .pipe(gulp.dest("public/stylesheets"));
 });
 
-gulp.watch('source/*.css', ['postcss']);
+gulp.watch('source/css/*.css', ['postcss']);
 gulp.task('default', ["serve"])
 
 

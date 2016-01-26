@@ -1,0 +1,18 @@
+.cf
+{
+    zoom: 1;
+}
+.cf:after
+{
+    display: block;
+    clear: both;
+
+    height: 0;
+
+    content: '\200B';
+}
+body
+{
+    background: #fec1f5;
+}
+/*# sourceMappingURL=test.css.map */
