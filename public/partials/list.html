@@ -1,7 +1,28 @@
-<ul class="topic-list cf">
-	<!-- <li class="topic-title">Ac娱乐</li> -->
-	<li class="p" ng-repeat="single in acfun">
-		<div class="l"><a href="{{single.href}}" target="_blank"><img ng-src="{{single.img}}" alt="single.text"></a></div>
-		<div class="r"><a href="{{single.href}}" title="{{single.title}}" target="_blank">{{single.title}}</a></div>
-	</li>	
-</ul>
+<!-- <ul class="topic-list cf">
+    <li class="p" ng-repeat="single in acfun">
+        <div class="l">
+            <a href="{{single.href}}" target="_blank">
+                <img ng-src="{{single.img}}" alt="single.text">
+            </a>
+        </div>
+        <div class="r">
+            <a href="{{single.href}}" title="{{single.title}}" target="_blank">{{single.title}}</a>
+        </div>
+    </li>
+</ul> -->
+<div class="row topic-list cf">
+    <div class="col s12 m4 poa" ng-repeat="single in acfun">
+        <div class="card">
+            <div class="card-image waves-effect waves-light">
+                <img ng-src="{{single.img}}">
+                <span class="card-title">{{single.index}}</span>
+            </div>
+            <div class="card-content">
+                <p>{{single.title}}</p>
+            </div>
+            <div class="card-action">
+                <a href="{{single.href}}">gotoacfun</a>
+            </div>
+        </div>
+    </div>
+</div>

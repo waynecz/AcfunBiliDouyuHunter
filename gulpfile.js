@@ -3,11 +3,12 @@
  */
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
-    cssmin = require('gulp-minify-css'),
     csscomb = require('gulp-csscomb'),
     browserSync = require('browser-sync').create(), //引入模块
     jsmin = require('gulp-uglify'),
+    plumber = require('gulp-plumber'),
     rename = require('gulp-rename');
+
 var postcss = require("gulp-postcss");
 var autoprefixer = require('autoprefixer');// css前缀
 var postcssSimpleVars = require("postcss-simple-vars");
@@ -42,6 +43,7 @@ gulp.task("postcss", function(){
         })];
 
     return gulp.src(["source/css/*.css"])
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(postcss(processors))
         .pipe(sourcemaps.write("."))
@@ -49,7 +51,10 @@ gulp.task("postcss", function(){
         .pipe(gulp.dest("public/stylesheets"));
 });
 
-gulp.watch('source/css/*.css', ['postcss']);
+gulp.task('watch', function () {
+    gulp.watch('source/css/*.css', ['postcss']);
+})
+
 gulp.task('default', ["serve"])
 
 

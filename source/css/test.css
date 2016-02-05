@@ -1,11 +1,11 @@
-@define-mixin clearfix{
-    &:after{
-        display: block;
-        clear: both;
-        content: "\200B";
-        height: 0;
-    }
-    *zoom: 1;
+@define-mixin clearfix {
+	&:after {
+		display: block;
+		clear: both;
+		content: "\200B";
+		height: 0;
+	}
+	*zoom: 1;
 }
 @define-mixin cover {
 	position: absolute;
@@ -14,127 +14,112 @@
 	right: 0;
 	left: 0;
 }
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1454640882_592969.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1454640882_592969.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1454640882_592969.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1454640882_592969.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1454640882_592969.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+                    
+                    
+.iconfont {
+	font-family: "iconfont";
+	font-size: 19px;
+	font-style: normal;
+	display: inline;
+	line-height: 40px;
+	font-weight: 100;
+}
 html, body {
 	height: 100%;
 	min-height: 723px;
-	min-width: 1000px;
-
+	min-width: 1000px;	/* overflow-y: hidden; */
+}
+body {
+	background: #f9f9f9;
+	padding-top: 120px;
+	/*background: url(../images/background.jpg);*/
 }
 * {
 	box-sizing: border-box;
 }
-.cf{
-    @mixin clearfix;
+.cf {
+	@mixin clearfix;
 }
 .main-wrap {
 	width: 100%;
 	height: 100%;
 }
-
 .side-bar {
-	position: relative;
+	position: fixed;
+	top: 0;
 	display: inline-block;
-	width: 39%;
-	height: 100%;
-	.bar-bili ,.bar-ac{
-		/* position: absolute;
-		top: 0;
-		left: 0; */
-		width: 100%;
+	width: 100%;
+	height: auto;
+	z-index: 100;
+}
+nav {
+	height: auto;
+	.nav-wrapper {
+		height: 64px;
+	}
+}
+.sub-nav-wapper {
+	width: 100%;
+	background: #fff;
+}
+.sub-nav {
+	width: 60%;
+	margin: 0 auto;
+	.bb {
+		float: left;
+		width: 19.3%;
+		line-height: 40px;
 		text-align: center;
-		height: 50%;
-		box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+		color: #888;
 		cursor: pointer;
-		transition: all 0.2s ease-out;
+		&.active, &:hover {
+			color: #1976d2;
+			background: #fff;
 
-		&:hover {
-			/* transform: scale(1.1); */
-			/* z-index: 10; */
+			.bbb {
+				border-bottom: 3px #1976d2 solid;
+			}
+		}
+		.bbb {
+			display: inline-block;
+			width: 40%;
+			height: 100%;
+			text-transform: Uppercase;
 		}
 	}
-	.bar-bili {
-		background: rgba(43,42,40,1);
+}
+.main-list {
+	position: relative;
+	width: 100%;
+	height: 90%;
+	overflow-x: hidden;	
+	/*background: rgba(0,103,132); */
+}
+.topic-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-contents: pace-around ;
+	@mixin cover;
+	margin: auto;
+	width: 80%;
+	min-width: 800px;
+	height: 100%;
+}
+.card  {
+	.card-image {
+		min-width: 100%;
 	}
-	.bar-ac {
-		background: rgba(43,42,40,1);
+	.card-title {
+	    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 	}
 	
 }
-
-.main-list {
-	position:relative;
-	height: 100%;
-	width: 60%;
-	background: rgb(43,42,40);
-	display: inline-block;
-	overflow-y: scroll;
-}
-.topic-list {
-	@mixin cover;
-	margin: auto;
-	margin-top: 2%;
-	width: 95%;
-	height: 80%;
-	.p {
-		display: inline-block;
-		float: left;
-		overflow: hidden;
-		width: 47%;
-		height: 19%;
-		margin-top: 3%;
-		box-sizing: border-box;
-		background: #fefefe;
-		border-radius: 3px;
-		/* border: 3px rgb(62,62,62) solid; */
-		box-shadow: -3px 4px 0px 0 rgba(43,42,40,1),-8px 10px 0 0 rgba(242,210,0,1);
-		transition: box-shadow .3s ease-out, transform 0.15s ease-out;
-		&:hover {
-			    /* box-shadow: 0 7px 15px 0 rgba(0,0,0,0.08),0 5px 18px 0 rgba(0,0,0,0.03); */
-			    transform: translateX(6px);
-		}
-		.l,.r {
-			display: inline-block;
-			height: 100%;
-			vertical-align: top;
-		}
-		.l {
-			position: relative;
-			width: 40%;
-			/* border-right: 3px rgb(62,62,62) solid; */
-			img{
-				
-				width: 100%;
-				height: 100%;
-				
-			}
-			/* &:after {
-				content: '';
-				@mixin cover;
-				background: rgba(184, 37, 57,.6)
-			} */
-		}
-		.r {
-			width: 59%;
-			color: #555;
-			padding-top: 30px;
-			a {
-				color: rgb(43,42,40);
-				font-size: 13px;
-
-				display: block;
-				width: 80%;
-				margin: 0 auto;
-				overflow: hidden;
-			}
-		}
-	}
-	.p:nth-child(2n) {
-		float: right;
-	}
-}
-
-
-
-
-
-
