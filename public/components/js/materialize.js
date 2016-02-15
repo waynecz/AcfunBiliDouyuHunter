@@ -692,7 +692,7 @@ if ($) {
         ready: undefined,
         complete: undefined,
         dismissible: true,
-        starting_top: '4%'
+        starting_top: '6%'
       },
       overlayID = _generateID(),
       $modal = $(this),
@@ -750,7 +750,7 @@ if ($) {
       }
       else {
         $.Velocity.hook($modal, "scaleX", 0.7);
-        $modal.css({ top: options.starting_top });
+        $modal.css({ top: '30%' });
         $modal.velocity({top: "10%", opacity: 1, scaleX: '1'}, {
           duration: options.in_duration,
           queue: false,

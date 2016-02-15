@@ -1,19 +1,7 @@
-<!-- <ul class="topic-list cf">
-    <li class="p" ng-repeat="single in acfun">
-        <div class="l">
-            <a href="{{single.href}}" target="_blank">
-                <img ng-src="{{single.img}}" alt="single.text">
-            </a>
-        </div>
-        <div class="r">
-            <a href="{{single.href}}" title="{{single.title}}" target="_blank">{{single.title}}</a>
-        </div>
-    </li>
-</ul> -->
 <div class="row topic-list cf">
     <div class="col s12 m4 poa" ng-repeat="single in acfun">
         <div class="card">
-            <div class="card-image waves-effect waves-light">
+            <div class="card-image waves-effect waves-light modal-trigger" ng-click="setUrl(single.href)">
                 <img ng-src="{{single.img}}">
                 <span class="card-title">{{single.index}}</span>
             </div>
@@ -21,8 +9,12 @@
                 <p>{{single.title}}</p>
             </div>
             <div class="card-action">
-                <a href="{{single.href}}">gotoacfun</a>
+                <a href="{{single.href}}" target="_blank">猴山直达</a>
             </div>
         </div>
     </div>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <embed class="player" allowFullScreenInteractive="true" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" AllowScriptAccess="always" rel="noreferrer" flashvars="type=page&url={{currentUrl}}" src="http://cdn.aixifan.com/player/ACFlashPlayer.out.swf" type="application/x-shockwave-flash" allowfullscreen="true" quality="high" wmode="window"></embed>
 </div>

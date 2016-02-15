@@ -120,6 +120,14 @@ nav {
 	}
 	.card-title {
 	    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-	}
-	
+	}	
+}
+#modal1 {
+	width: 800px;
+	min-height: 504px;
+	overflow-y: hidden;
+}
+.player {
+	width: 100%;
+	height: 100%;
 }

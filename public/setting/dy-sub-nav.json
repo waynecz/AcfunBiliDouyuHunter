@@ -1,0 +1,21 @@
+[{
+	"sref": "page.dy({ area: 'entertainment' })",
+	"icon": "icon-hot",
+	"displayName": "娱乐"
+}, {
+	"sref": "page.dy({ area: 'movie' })",
+	"icon": "icon-dianying",
+	"displayName": "影视"
+}, {
+	"sref": "page.dy({ area: 'sport' })",
+	"icon": "icon-yundong",
+	"displayName": "体育"
+}, {
+	"sref": "page.dy({ area: 'science' })",
+	"icon": "icon-weixinduansvgtubiao13",
+	"displayName": "科学"
+}, {
+	"sref": "page.dy({ area: 'game' })",
+	"icon": "icon-youxipeilian",
+	"displayName": "游戏"
+}]
