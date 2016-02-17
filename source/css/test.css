@@ -65,7 +65,11 @@ nav {
 	.nav-wrapper {
 		height: 64px;
 	}
+	.brand-logo.right {
+		height: 100%;
+	}
 }
+
 .sub-nav-wapper {
 	width: 100%;
 	background: #fff;
@@ -104,11 +108,6 @@ nav {
 	/*background: rgba(0,103,132); */
 }
 .topic-list {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	align-contents: pace-around ;
-	@mixin cover;
 	margin: auto;
 	width: 80%;
 	min-width: 800px;
@@ -124,10 +123,13 @@ nav {
 }
 #modal1 {
 	width: 800px;
-	min-height: 504px;
+	height: 504px;
 	overflow-y: hidden;
 }
 .player {
 	width: 100%;
+	height: 100%;
+}
+.fresh {
 	height: 100%;
 }

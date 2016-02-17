@@ -75,6 +75,11 @@ nav .nav-wrapper
 {
     height: 64px;
 }
+nav .brand-logo.right
+{
+    height: 100%;
+}
+
 .sub-nav-wapper
 {
     width: 100%;
@@ -131,30 +136,10 @@ nav .nav-wrapper
 }
 .topic-list
 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;
-
     width: 80%;
     min-width: 800px;
     height: 100%;
     margin: auto;
-
-    -webkit-flex-flow: row wrap;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    -webkit-box-pack: start;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-            justify-content: flex-start;
-    align-contents: pace-around ;
 }
 .card .card-image
 {
@@ -169,11 +154,15 @@ nav .nav-wrapper
     overflow-y: hidden;
 
     width: 800px;
-    min-height: 504px;
+    height: 504px;
 }
 .player
 {
     width: 100%;
+    height: 100%;
+}
+.fresh
+{
     height: 100%;
 }
 /*# sourceMappingURL=test.css.map */

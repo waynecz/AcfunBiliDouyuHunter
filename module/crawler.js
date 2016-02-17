@@ -19,41 +19,45 @@ var dictionary = {
 	'59_': 'game'
 };
 
-ep.after('fetch_html', codes.length, function(responses) {
-	responses.map(function(response) {
-		var code = response[0];
-		var body = response[1];
-		var address = 'http://www.acfun.tv';
-		var topics = [];
-		var $ = cheerio.load(body);
-		$('#area-b .r .page.active .unit').each(function(i, e) {
-			var $e = $(e);
-			var rst = {};
-			var link = $e.find('.r a').attr('href');
-			var authorLink = $e.find('.r>.author>a').attr('href');
+ep.tail('getAcfun', function(data) { // 每次刷新重新挂载after监听器
+	ep.after('fetch_html', codes.length, function(responses) {
+		responses.map(function(response) {
+			var code = response[0];
+			var body = response[1];
+			var address = 'http://www.acfun.tv';
+			var topics = [];
+			var $ = cheerio.load(body);
+			$('#area-b .r .page.active .unit').each(function(i, e) {
+				var $e = $(e);
+				var rst = {};
+				var link = $e.find('.r a').attr('href');
+				var authorLink = $e.find('.r>.author>a').attr('href');
 
-			rst.href = url.resolve(address, link);
-			rst.title = $e.find('.r>a').text();
-			rst.img = $e.find('.l img')[0].attribs['data-src'];
-			rst.authorLink = url.resolve(address, authorLink);
-			rst.authorText = $e.find('.r>.author>a').text();
-			rst.info = $e.find('.r>.info-extra').text().split('\n')[0];
-			rst.index = i + 1;
+				rst.href = url.resolve(address, link);
+				rst.title = $e.find('.r>a').text();
+				rst.img = $e.find('.l img')[0].attribs['data-src'];
+				rst.authorLink = url.resolve(address, authorLink);
+				rst.authorText = $e.find('.r>.author>a').text();
+				rst.info = $e.find('.r>.info-extra').text().split('\n')[0];
+				rst.index = i + 1;
 
-			topics.push(rst);
-			// var fileName = parseUrlForFileName(o.img);
-			// downloadImg(o.img, fileName);
+				topics.push(rst);
+				// var fileName = parseUrlForFileName(o.img);
+				// downloadImg(o.img, fileName);
+			})
+			var last = JSON.stringify(topics);
+
+			fs.writeFile('./public/crawlerData/ac-' + dictionary[code + '_'] + '.json', last, function(err) {
+				if (err) throw err;
+				console.log('AC ' + dictionary[code] + '榜单获取成功了 ( ゜- ゜)つロ');
+			});
 		})
-		var last = JSON.stringify(topics);
-
-		fs.writeFile('../myNode/public/crawlerData/acfun-' + dictionary[code + '_'] + '.json', last, function(err) {
-			if (err) throw err;
-			console.log('AC ' + dictionary[code] + '榜单获取成功了 ( ゜- ゜)つロ');
-		});
 	})
-})
+});
+
 
 var Acfun = function() {
+	ep.emit('getAcfun');
 	codes.map(function(code) {
 		request({
 				url: 'http://www.acfun.tv/v/list' + code + '/index.htm',
@@ -74,7 +78,9 @@ var Acfun = function() {
 	});
 }
 
-module.exports = {Acfun : Acfun}
+module.exports = {
+	Acfun: Acfun
+}
 
 function parseUrlForFileName(address) {
 	var fileName = path.basename(address);
@@ -87,7 +93,7 @@ function downloadImg(uri, filename) {
 			console.log('err:' + err);
 			return false;
 		}
-		request(uri).pipe(fs.createWriteStream('../myNode/public/images/' + filename)).on('close', function() {
+		request(uri).pipe(fs.createWriteStream('./public/images/' + filename)).on('close', function() {
 			console.log(filename + ' done!')
 		})
 	})
