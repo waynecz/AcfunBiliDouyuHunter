@@ -18,27 +18,22 @@
 <!-- <div id="modal1" class="modal">
     <embed class="player" allowFullScreenInteractive="true" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" AllowScriptAccess="always" rel="noreferrer" flashvars="type=page&url={{currentUrl}}" src="http://cdn.aixifan.com/player/ACFlashPlayer.out.swf" type="application/x-shockwave-flash" allowfullscreen="true" quality="high" wmode="window"></embed>
 </div> -->
-<div ng-cloak>
-  <md-content class="md-padding">
-    <div layout="row" layout-wrap  layout-align="space-around space-around">
-      <md-card ng-repeat="single in topics" flex="30" >
+<div layout='row' layout-wrap layout-align="center space-around" class="list-inner">
+    <md-card ng-repeat="single in topics" flex="45" flex-xs="100">
         <img ng-src="{{single.img}}" class="md-card-image" alt="Washed Out">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Action buttons</span>
-          </md-card-title-text>
-        </md-card-title>
+        <!-- <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Action buttons</span>
+            </md-card-title-text>
+        </md-card-title> -->
         <md-card-content>
-          <p>
-            {{single.title}}
-          </p>
+            <a class="card-title" href="{{single.href}}" target="_blank">
+        {{single.title}}
+      </a>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      
-    </div>
-  </md-content>
+        <!-- <md-card-actions layout="row" layout-align="end center">
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+        </md-card-actions> -->
+    </md-card>
 </div>

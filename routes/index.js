@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: '欢迎来到德莱联盟'});
 });
 router.get('/f5', function(req, res, next) {
-  ac.Acfun();	
+  ac.Acfun();
+  	
   res.json({
   	a: 'asasa'
   })	

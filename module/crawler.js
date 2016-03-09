@@ -55,6 +55,34 @@ ep.tail('getAcfun', function(data) { // 每次刷新重新挂载after监听器
 	})
 });
 
+function testfun() {
+	return new Promise(function (resolve, reject) {
+		try {
+			ep.emit('getAcfun');
+			codes.map(function(code) {
+				request({
+						url: 'http://www.acfun.tv/v/list' + code + '/index.htm',
+						headers: {
+							'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'
+						},
+						gzip: true
+					},
+					function(error, res, body) {
+						if (!error && res.statusCode == 200) {
+							// var thisUrl =  'http://www.acfun.tv/v/list' + code + '/index.htm';
+							console.log('飞船对接 AC ' + dictionary[code] + ' 成功！');
+							ep.emit('fetch_html', [code, body]);
+						} else {
+							console.log('飞船与 AC ' + dictionary[code] + '撞毁啦！错误代码：' + res.statusCode)
+						}
+					})
+			});
+		} catch (err) {
+			reject(err);
+		}
+		resolve();
+	})
+}
 
 var Acfun = function() {
 	ep.emit('getAcfun');
@@ -79,7 +107,8 @@ var Acfun = function() {
 }
 
 module.exports = {
-	Acfun: Acfun
+	Acfun: Acfun,
+	testfun: testfun
 }
 
 function parseUrlForFileName(address) {

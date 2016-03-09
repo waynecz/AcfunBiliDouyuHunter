@@ -1,18 +1,20 @@
-<header class="side-bar" layout="">
-    <nav>
-        <div class="nav-wrapper teal darken-1">
-            <a refresh href="javascripts:;" class="brand-logo right"><img class="fresh" src="images/logo.png" alt="Xiaohuangwang"></a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li ui-sref-active="active"><a ui-sref="page.ac({ site: 'ac'})"><i class="iconfont icon-logoqaq"></i> </a></li>
-                <li ui-sref-active="active"><a ui-sref="page.bili({ site: 'bili'})">BILIBILI__</a></li>
-                <li ui-sref-active="active"><a ui-sref="page.dy({ site: 'dy'})">DOUYU___</a></li>
-            </ul>
-        </div>
-        <div class="sub-nav-wapper">
-            <ul class="sub-nav cf">
-                <li ng-repeat="area in areas" class="bb" ui-sref-active="active" ui-sref="{{area.sref}}"><span class="bbb"><i class="iconfont {{area.icon}}"> </i> {{area.displayName}}</span></li>
-            </ul>
-        </div>
-    </nav>
-</header>
-<section class="main-list" ui-view></section>
+<!-- nav-->
+<md-toolbar class="main-nav-wrapper" layout="row">
+    <div flex layout=row class="toolbar-overlay">
+        <a refresh class="brand-logo" flex="5">
+            <div class="fresh"></div>
+        </a>
+        <ul class="main-nav" flex layout="row">
+            <li ui-sref-active="active"><a ui-sref="page.ac({ site: 'ac'})"><i class="iconfont icon-logoqaq"></i> </a></li>
+            <li ui-sref-active="active"><a ui-sref="page.bili({ site: 'bili'})">BILIBILI</a></li>
+            <li ui-sref-active="active"><a ui-sref="page.dy({ site: 'dy'})">DOUYU</a></li>
+        </ul>
+    </div>
+</md-toolbar>
+<!-- sub-nav-->
+<!-- <md-toolbar class="sub-nav-wapper md-whiteframe-2dp" layout="row" layout-align="center">
+    <ul class="sub-nav cf" layout="row" flex flex-gt-md="60">
+        <li flex ng-repeat="area in areas" class="bb" ui-sref-active="active" ui-sref="{{area.sref}}"><span class="bbb"><i class="iconfont {{area.icon}}"> </i> {{area.displayName}}</span></li>
+    </ul>
+</md-toolbar> -->
+<md-content class="main-list" layout="row" layout-align="center start" ui-view></md-content>

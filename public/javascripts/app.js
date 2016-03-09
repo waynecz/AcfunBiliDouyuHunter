@@ -1,4 +1,5 @@
 var Nexus = angular.module('Nexus', ["ui.router", "ngMaterial"]);
+// 
 // Routers
 Nexus
 	.config(function($stateProvider, $urlRouterProvider) {
@@ -11,10 +12,10 @@ Nexus
 					$http.get('setting/' + $stateParams.site + '-sub-nav.json').success(function(data) {
 						$scope.areas = data;
 					});
-					$scope.refresh = function () {
-						$http.get('/f5').success(function (data) {
+					$scope.refresh = function() {
+						$http.get('/f5').success(function(data) {
 							console.log(data);
-						});	
+						});
 					}
 				}
 			})
@@ -53,14 +54,14 @@ Nexus
 			$scope.currentUrl = thisUrl;
 		}
 	}])
-// Directives
+	// Directives
 Nexus
 	.directive('refresh', [function() {
 		return {
 			restrict: 'A',
 			scope: true,
 			link: function(scope, iElement, iAttrs) {
-				iElement.bind('click', function () {
+				iElement.bind('click', function() {
 					scope.$apply('refresh()')
 				})
 			}
